@@ -27,12 +27,13 @@ const [type, setType] = useState('income');
         <Container>
             <h2>Cadastrar Transação</h2>
             <input type="text" placeholder="Título"/>
-            <input type="text" placeholder="Valor"/>
+            <input type="number" placeholder="Valor"/>
             <TransactionTypeContainer>
                <RadioBox 
                type="button" 
                onClick={() => {setType('income');}}
                 isActive={type === 'income'}
+                activeColor = 'green'
                >
                    <img src={incomeImg} alt="Entrada" />
                   <span>Entrada</span> </RadioBox>
@@ -41,6 +42,7 @@ const [type, setType] = useState('income');
                 type="button" 
                 onClick={() => {setType('outcome');}}
                 isActive={type === 'outcome'}
+                activeColor = 'red'
                 >
                 <img src={outcomeImg} alt="Saída" />
                 <span>Saída</span>
