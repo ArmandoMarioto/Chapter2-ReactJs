@@ -8,7 +8,7 @@ import { Container } from "./styles";
 
 export function Summary() {
 
-    const data = useContext(TransactionsContext);
+    const {transactions} = useContext(TransactionsContext);
     const [income, setIncome] = useState(0);
     const [outcome, setOutcome] = useState(0);
 
