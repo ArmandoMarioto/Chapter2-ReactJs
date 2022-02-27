@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState } from 'react';
-import { api } from './services/api';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { api } from '../services/api';
 
 type Transaction ={
     id: string;
@@ -21,7 +21,7 @@ type TransactionsContextData = {
     createTransaction(transaction: TransactionInput): Promise<void>;
 }
 
-export const TransactionsContext = createContext<TransactionsContextData>(
+const TransactionsContext = createContext<TransactionsContextData>(
     {} as TransactionsContextData
 );
 
@@ -51,4 +51,15 @@ export function TransactionProvider({children }:TransactionProviderProps) {
             </TransactionsContext.Provider>
         
     )
+}
+
+
+export function useTransactions() {
+    const context = useContext(TransactionsContext);
+
+    if (!context) {
+        throw new Error('useTransactions must be used within a TransactionProvider');
+    }
+
+    return context;
 }
